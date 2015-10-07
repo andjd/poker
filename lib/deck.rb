@@ -5,7 +5,6 @@ class Deck
   def initialize
     @cards = []
     add_cards
-    shuffle_cards
   end
 
   def add_cards
@@ -21,6 +20,6 @@ class Deck
   end
 
   def deal_card
-    Card.new(:spades, :ace)
+    @cards.pop
   end
 end

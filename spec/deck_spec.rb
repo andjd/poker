@@ -21,11 +21,6 @@ describe Deck do
       expect(deck.cards.uniq {|el| el.to_a}.length).to eq(52)
     end
 
-    it "randomizes the deck" do
-      expect(deck.cards).to receive(:shuffle)
-      Deck.new
-    end
-
   end
 
   describe "#deal_card" do
@@ -37,6 +32,10 @@ describe Deck do
       top_card = deck.cards.last
       expect(deck.deal_card).to eq(top_card)
     end
-    it "removes that card from the deck"
+    it "removes that card from the deck" do
+      top_card = deck.cards.last
+      deck.deal_card
+      expect(deck.cards.include?(top_card)).to be false
+    end
   end
 end
